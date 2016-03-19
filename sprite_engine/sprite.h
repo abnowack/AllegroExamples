@@ -26,14 +26,12 @@ struct sprite_map *sprite_map_create(struct sprite_map_asset asset) {
 void sprite_map_draw_framexy(struct sprite_map* smap, unsigned int frame_ix, unsigned int frame_iy, unsigned int x, unsigned int y) {
     unsigned int frame_xpixel = smap->frame_dx * frame_ix;
     unsigned int frame_ypixel = smap->frame_dy * frame_iy;
-    printf(" - %d %d\n", frame_xpixel, frame_ypixel);
     al_draw_bitmap_region(smap->image, frame_xpixel, frame_ypixel, smap->frame_dx, smap->frame_dy, x, y, 0);
 }
 
 void sprite_map_draw(struct sprite_map* smap, unsigned int frame, unsigned int x, unsigned int y) {
     unsigned int frame_ix = frame % smap->frame_nx;
     unsigned int frame_iy = frame / smap->frame_nx;
-    printf("%d %d %d\n", frame, frame_ix, frame_iy);
     sprite_map_draw_framexy(smap, frame_ix, frame_iy, x, y);
 }
 
